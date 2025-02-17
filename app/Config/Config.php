@@ -11,12 +11,12 @@ class Config
     static public function conexionDB(): array
     {
         return [
-
-            'driver'   => 'mysql', // mysql(MySql) || pgsql (PostgreSQL)
-            'host'     => '',
-            'dbname'   => '',
-            'user'     => '',
-            'password' => '',
+            'driver'   => 'mysql', // Cambia a 'pgsql' si usas PostgreSQL
+            'host'     => 'localhost',
+            'port'     => '5432',
+            'dbname'   => 'mi_base',
+            'user'     => 'usuario',
+            'password' => 'contraseña'
         ];
     }
 }
