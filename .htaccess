@@ -1,0 +1,13 @@
+# Este archivo .htaccess se utiliza para configurar reglas de reescritura de URL para un servidor Apache.
+
+# Habilitar el módulo RewriteEngine
+RewriteEngine On
+
+# Verificar si la solicitud contiene la palabra "public" en la ruta de la URL
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+
+# Si se cumple la condición, redirigir a la parte coincidente de la URL sin "public" usando una redirección temporal 302
+RewriteRule ^ %1 [L,NE,R=302]
+
+# Para todas las demás solicitudes que no contienen "public" en la ruta de la URL, anteponer "public/" a la URL
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
