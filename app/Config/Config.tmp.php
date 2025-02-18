@@ -19,4 +19,9 @@ class Config
             'password' => 'contraseña'
         ];
     }
+
+    static public function timezone(): void
+    {
+        date_default_timezone_set('America/Mexico_City');
+    }
 }

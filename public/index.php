@@ -1,11 +1,11 @@
 <?php
 
-// Cargar controladores externos
-
+use App\Config\Config;
 use App\Models\FileLoader;
 
-require_once '../app/controller.php';
+Config::timezone();
 
+require_once '../app/controller.php';
 
 $loader = new FileLoader('../');
 $loader->cargar('router/router');
