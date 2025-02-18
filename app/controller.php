@@ -4,12 +4,10 @@ use App\Models\FileLoader;
 
 require_once 'Models/FileLoader.php';
 
-(function () {
-    $loader = new FileLoader();
+$CLoader = new FileLoader();
 
-    $loader->cargar('Config/Config');
-    $loader->cargar('Router/Router');
+$CLoader->cargar('Config/Config');
+$CLoader->cargar('Router/Router');
+$CLoader->cargar('Router/HttpData');
 
-
-    /** */
-})();
+$CLoader->cargar('Session/Session');
