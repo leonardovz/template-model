@@ -1,14 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+use App\Config\Encriptar;
+use App\Models\Usuarios;
 
-<body>
+$h = new Template();
+$h->TITULO   = "TEST HOME";
+$h->KEYWORDS = "Home";
 
-</body>
+$h->header();
 
-</html>
+
+$ssid = new SessionManager();
+
+
+
+// $user = Usuarios::getUser("username", "ing.leonardo");
+
+// echo "<br>";
+// var_dump($user);
+// echo "<br>";
+
+// $valid =  Encriptar::verificar("123456", $user["password"]);
+
+// var_dump($valid);

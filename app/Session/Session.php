@@ -69,27 +69,3 @@ class SessionManager
         session_regenerate_id(true);
     }
 }
-
-// Ejemplo de uso
-try {
-    $session = new SessionManager();
-
-    // Simular un login exitoso
-    $userData = [
-        'id' => 1,
-        'username' => 'john_doe',
-        'email' => 'john@example.com'
-    ];
-
-    $session->setUserSession($userData);
-
-    // Verificar si el usuario está logueado
-    if ($session->isLoggedIn()) {
-        echo "Usuario logueado: " . $session->getUserData('username');
-    }
-
-    // Cerrar sesión
-    $session->logout();
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-}
