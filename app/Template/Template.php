@@ -1,6 +1,10 @@
 <?php
 
+namespace App\Template;
+
 use App\Config\Config;
+use App\Templates\AdminKit\NavBar;
+use App\Templates\AdminKit\NavBarLeft;
 
 class Template
 {
@@ -69,14 +73,46 @@ class Template
     }
     public function GoogleAPI($key)
     {
-        $this->addStyle("https://maps.googleapis.com/maps/api/js?key=$key");
         $this->addScript("https://maps.googleapis.com/maps/api/js?key=$key");
     }
+    public function adminKit()
+    {
+        $this->addStyle('assets/vendor/fonts/boxicons.css');
+        $this->addStyle('assets/vendor/css/core.css');
+        $this->addStyle('assets/vendor/css/theme-default.css');
+        $this->addStyle('assets/css/main-menu.css');
+        $this->addStyle('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css');
+
+        $this->addScript('assets/vendor/js/helpers.js');
+        $this->addScript('assets/js/config.js');
+        $this->addScript('assets/vendor/libs/jquery/jquery.js');
+        $this->addScript('assets/vendor/libs/popper/popper.js');
+        $this->addScript('assets/vendor/js/bootstrap.js');
+        $this->addScript('assets/vendor/js/menu.js');
+        $this->addScript('assets/js/main.js');
+    }
+    public function AdminKitNavBar()
+    {
+        $N = new NavBar();
+        return $N->navbar();
+    }
+    public function AdminKitNavBarLeft()
+    {
+        $N = new NavBarLeft();
+        return $N->NavBarLeft();
+    }
+    public function scripts()
+    {
+        return $this->renderScripts();
+    }
+
+
 
     public function addScript($script, $type = 'text/javascript')
     {
         $this->headerScripts[] = ['src' => $script, 'type' => $type];
     }
+
 
     public function addStyle($style)
     {
@@ -91,10 +127,12 @@ class Template
         }
         return $render;
     }
-    public function renderScripts()
+    private function renderScripts()
     {
+        $scripts = "";
         foreach ($this->headerScripts as $script) {
-            echo "<script src='{$script['src']}' type='{$script['type']}'></script>\n";
+            $scripts .= "<script src='{$script['src']}' type='{$script['type']}'></script>\n";
         }
+        return $scripts;
     }
 }
