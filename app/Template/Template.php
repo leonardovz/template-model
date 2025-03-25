@@ -25,7 +25,7 @@ class Template
         return "?v=" . Config::version();
     }
 
-    function header($styles = false)
+    function header()
     {
         $header = "";
         $header .= '
@@ -101,6 +101,13 @@ class Template
         $N = new NavBarLeft();
         return $N->NavBarLeft();
     }
+
+    /** START PUBLIC KIT */
+
+
+    /** END PUBLIC KIT */
+
+
     public function scripts()
     {
         return $this->renderScripts();

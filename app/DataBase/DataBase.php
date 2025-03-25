@@ -14,7 +14,10 @@ class Database
     {
         $this->connect();
     }
-
+    public function conexion()
+    {
+        return $this->connection;
+    }
     // Función para establecer la conexión con la base de datos
     private function connect(): void
     {

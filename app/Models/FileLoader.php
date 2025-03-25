@@ -20,7 +20,7 @@ class FileLoader
             require_once $filePath;
         } else {
             http_response_code(404);
-            echo json_encode(["error" => "Archivo no encontrado"]);
+            echo json_encode(["error" => "Archivo no encontrado $ruta"]);
         }
     }
 }

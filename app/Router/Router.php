@@ -8,13 +8,14 @@ class Router
 {
     private array $routes = [];
     private array $middlewares = [];
-    private $wildcardRoutes = [];
+    private array $wildcardRoutes = [];
 
     public function addRoute(string $method, string $path, callable $handler, string $type = 'json', array $middlewares = []): void
     {
-        if (strpos($path, "{any}") !== false) {
+        if (strpos($path, '{') !== false) {
+            $pattern = preg_replace('/\{(\w+)\}/', '(?P<$1>[^/]+)', $this->normalizePath($path));
             $this->wildcardRoutes[$method][] = [
-                'pattern' => str_replace('{any}', '(.*)', $this->normalizePath($path)),
+                'pattern' => "#^{$pattern}$#",
                 'handler' => $handler,
                 'type' => $type,
                 'middlewares' => $middlewares
@@ -57,10 +58,10 @@ class Router
             }
         }
 
-        // Buscar coincidencias con {any}
+        // Buscar coincidencias con patrones dinámicos
         foreach ($this->wildcardRoutes[$method] ?? [] as $route) {
-            if (preg_match("#^" . $route['pattern'] . "$#", $uri, $matches)) {
-                $params = array_slice($matches, 1);
+            if (preg_match($route['pattern'], $uri, $matches)) {
+                $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
                 $this->executeHandler($route, $params);
                 return;
             }

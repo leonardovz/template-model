@@ -18,7 +18,7 @@ $CLoader->cargar('Template/AdminKit/NavBar');
 $CLoader->cargar('Template/AdminKit/NavBarLeft');
 $CLoader->cargar('Template/AdminKit/NavMenu');
 
-$CLoader->cargar('Database/Database');
+$CLoader->cargar('DataBase/DataBase');
 $CLoader->cargar('Models/Funciones');
 $CLoader->cargar('Models/Encriptar');
 

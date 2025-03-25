@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Database\Database;
 
-class Usuarios
+class Usuarios extends BaseModel
 {
     static function getUser($campo, $valor)
     {
