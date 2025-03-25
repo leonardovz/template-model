@@ -12,7 +12,7 @@ class NavBar
 
     public function __construct()
     {
-        $this->ssmg = Config::RUTA();
+        $this->ruta = Config::RUTA();
     }
     public function navbar()
     {
@@ -20,9 +20,9 @@ class NavBar
         $user = $ssmg->getUserData();
 
         $user = [
-            'nombre' => 'Alvah',
-            'apellidos' => 'Alvah',
-            'imagen' => 'images/icons/icon.png',
+            'nombre'     => 'TEST',
+            'apellidos'  => 'USER',
+            'imagen'     => 'images/icons/icon.png',
         ];
 
 

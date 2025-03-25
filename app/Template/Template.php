@@ -20,6 +20,8 @@ class Template
     public $IMAGEN      = "images/icons/icon.png";
     public $LOGO        = "images/icons/icon.png";
 
+    public function __construct() {}
+
     function v()
     {
         return "?v=" . Config::version();
@@ -90,16 +92,23 @@ class Template
         $this->addScript('assets/vendor/js/bootstrap.js');
         $this->addScript('assets/vendor/js/menu.js');
         $this->addScript('assets/js/main.js');
+
+        $this->fontAwesome();
     }
+    public function fontAwesome()
+    {
+        $this->addStyle('assets/vendor/fonts/fontawesome/css/all.min.css');
+    }
+
     public function AdminKitNavBar()
     {
         $N = new NavBar();
         return $N->navbar();
     }
-    public function AdminKitNavBarLeft()
+    public function AdminKitNavBarLeft($active, $sub_active = false)
     {
         $N = new NavBarLeft();
-        return $N->NavBarLeft();
+        return $N->NavBarLeft($active, $sub_active);
     }
 
     /** START PUBLIC KIT */
@@ -130,6 +139,7 @@ class Template
     {
         $render = "";
         foreach ($this->headerStyles as $style) {
+            $style = Config::RUTA() . $style;
             $render .= "<link rel='stylesheet' type='text/css' href='$style'>\n";
         }
         return $render;
@@ -138,8 +148,10 @@ class Template
     {
         $scripts = "";
         foreach ($this->headerScripts as $script) {
+            $script['src'] = Config::RUTA() . $script['src'];
             $scripts .= "<script src='{$script['src']}' type='{$script['type']}'></script>\n";
         }
+
         return $scripts;
     }
 }

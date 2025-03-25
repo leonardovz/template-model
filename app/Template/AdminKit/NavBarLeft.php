@@ -19,7 +19,7 @@ class NavBarLeft
                     <div class="app-brand main-menu">
                         <a href="' . $ruta . 'sistema" class="app-brand-link">
                             <span class="app-brand-logo main-menu">
-                                <img src="' . $ruta . 'images/system/icons/icon.png" width="38px">
+                                <img src="' . $ruta . 'images/icons/icon.png" width="38px">
                             </span>
                             <span class="app-brand-text main-menu menu-text fw-bolder ms-2">' . $T->SISTEMNAME . '</span>
                         </a>
