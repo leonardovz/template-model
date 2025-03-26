@@ -60,7 +60,8 @@ class Template
                 <meta name="twitter:url" content="' . Config::RUTA() . '" />
                 <meta name="twitter:card" content="' . $this->DESCRIPCION . '" />
                 <link rel="manifest" href="' . Config::RUTA() . 'manifiesto/webmanifest.json' . self::v() . '">
-                <link rel="icon" href="' . Config::RUTA() . $this->LOGO . '" type="image/x-icon"/>';
+                <link rel="icon" href="' . Config::RUTA() . $this->LOGO . '" type="image/x-icon"/>
+                <script>const RUTA = "' . Config::RUTA() . '";</script>';
 
         $header .= $this->renderHeader();
 
@@ -94,10 +95,15 @@ class Template
         $this->addScript('assets/js/main.js');
 
         $this->fontAwesome();
+        $this->sweetAlert();
     }
     public function fontAwesome()
     {
         $this->addStyle('assets/vendor/fonts/fontawesome/css/all.min.css');
+    }
+    public function sweetAlert()
+    {
+        $this->addScript('assets/vendor/libs/sweetAlert/sweetalert2.all.min.js');
     }
 
     public function AdminKitNavBar()
@@ -124,9 +130,9 @@ class Template
 
 
 
-    public function addScript($script, $type = 'text/javascript')
+    public function addScript($script, $type = 'text/javascript', $ruta = true)
     {
-        $this->headerScripts[] = ['src' => $script, 'type' => $type];
+        $this->headerScripts[] = ['src' => $script, 'type' => $type, 'ruta' => $ruta];
     }
 
 
@@ -148,7 +154,7 @@ class Template
     {
         $scripts = "";
         foreach ($this->headerScripts as $script) {
-            $script['src'] = Config::RUTA() . $script['src'];
+            if ($script['ruta']) $script['src'] = Config::RUTA() . $script['src'];
             $scripts .= "<script src='{$script['src']}' type='{$script['type']}'></script>\n";
         }
 

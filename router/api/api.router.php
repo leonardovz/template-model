@@ -5,13 +5,10 @@ use App\Router\Router;
 $router = new Router();
 
 
-$router->get('/api/update', function () {
-    return ["message" => "Actualización de la API"];
-}, 'json');
+$router->post('/api/usuarios/create',    fn() => '../api/usuarios/create.api.php',   'view');
+$router->post('/api/usuarios/update',    fn() => '../api/usuarios/update.api.php',   'view');
+$router->post('/api/usuarios/show',      fn() => '../api/usuarios/show.api.php',     'view');
 
-$router->get('/api/ayuda', function () {
-    return ["message" => "Actualización de la API"];
-}, 'json');
 
 
 $router->get('/api/{any}', function () {

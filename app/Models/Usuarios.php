@@ -6,6 +6,12 @@ use App\Database\Database;
 
 class Usuarios extends BaseModel
 {
+    public function __construct()
+    {
+        $this->DataBase = new Database();
+        $this->table = 'usuarios';
+    }
+
     static function getUser($campo, $valor)
     {
         $db = new Database();

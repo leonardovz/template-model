@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Google\GoogleApi;
 use App\Models\Usuarios;
 use App\Router\HttpData;
 
@@ -9,6 +10,9 @@ $password = HttpData::post("password");
 
 
 $user = Usuarios::getUser("correo", $correo);
+$captcha = HttpData::post("captcha");
+
+// if(GoogleApi)
 
 if (!$user) {
     die(json_encode([
