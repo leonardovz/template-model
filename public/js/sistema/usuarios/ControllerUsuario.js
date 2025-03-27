@@ -2,14 +2,20 @@ import ModelUsuario from "./ModelUsuario.js";
 
 class ControllerUsuario {
     modal = null;
+    container = null;
 
-    construir(filter = {}) {
-        this.create();
+    async construir(filter = {}) {
+        const res = await ModelUsuario.fetch('show');
+        this.container.html(ModelUsuario.table(res.data));
+        // this.create();
+
     }
     async init() {
         this.modal = $("#userModal");
+        this.container = $("#container-usuarios");
         this.construir();
     }
+
     create() {
         this.modal.modal('show');
         const form = this.modal.find('#userForm').off();

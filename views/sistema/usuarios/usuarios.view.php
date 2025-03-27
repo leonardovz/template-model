@@ -82,78 +82,8 @@ $h->header();
                                             <button type="button" class="btn btn-sm btn-outline-secondary">Inactivos</button>
                                         </div>
                                     </div>
-                                    <div class="table-responsive text-nowrap">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Usuario</th>
-                                                    <th>Nombre</th>
-                                                    <th>Rol</th>
-                                                    <th>Estado</th>
-                                                    <th>Último Acceso</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="table-border-bottom-0">
-                                                <tr>
-                                                    <td><strong>admin</strong></td>
-                                                    <td>Administrador Sistema</td>
-                                                    <td>Administrador</td>
-                                                    <td><span class="badge bg-label-success me-1">Activo</span></td>
-                                                    <td>2023-06-15 08:45</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Editar</a>
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-lock-alt me-1"></i> Permisos</a>
-                                                                <a class="dropdown-item text-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>usuario1</strong></td>
-                                                    <td>Juan Pérez</td>
-                                                    <td>Editor</td>
-                                                    <td><span class="badge bg-label-success me-1">Activo</span></td>
-                                                    <td>2023-06-14 14:30</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Editar</a>
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-lock-alt me-1"></i> Permisos</a>
-                                                                <a class="dropdown-item text-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>usuario2</strong></td>
-                                                    <td>María López</td>
-                                                    <td>Visualizador</td>
-                                                    <td><span class="badge bg-label-warning me-1">Pendiente</span></td>
-                                                    <td>2023-06-10 09:15</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Editar</a>
-                                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-lock-alt me-1"></i> Permisos</a>
-                                                                <a class="dropdown-item text-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Eliminar</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div class="card-body px-0" id="container-usuarios">
+
                                     </div>
                                     <div class="card-footer">
                                         <nav aria-label="Page navigation">
