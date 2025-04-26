@@ -12,7 +12,7 @@ $data = $USR->mostrar();
 $res = [
     'status'    => true,
     'response'  => 'success',
-    'rext'      => 'Datos encontrados',
+    'text'      => 'Datos encontrados',
     'data'      => $data
 ];
 

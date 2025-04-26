@@ -202,8 +202,17 @@ class BaseModel
 
     public function getToAttr($columna, $valor)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE $columna = :valor";
-        return $this->DataBase->fetchOne($sql, ['valor' => $valor]);
+        $this->filter($columna, '=', $valor);
+        $filtro = $this->filterClauses();
+        $params = [];
+
+        if ($filtro) {
+            $params = array_merge($params, $filtro[1]);
+            $filtro = $filtro[0];
+        }
+
+        $sql = "SELECT * FROM {$this->table} $filtro";
+        return $this->DataBase->fetchOne($sql, $params);
     }
 
     static public function generar_tabla($datos)

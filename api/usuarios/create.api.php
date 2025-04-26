@@ -52,7 +52,7 @@ if (Usuarios::getUser('correo', $correo)) {
     ]));
 }
 
-$pwd = Functions::generatePassword(8);
+$pwd      = Functions::generatePassword(8);
 $password = Encriptar::encriptar($pwd);
 $username = strtolower(Functions::removeSpecialChars($username));
 

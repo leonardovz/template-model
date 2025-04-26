@@ -10,13 +10,12 @@ class Usuarios extends BaseModel
     {
         $this->DataBase = new Database();
         $this->table = 'usuarios';
+        $this->filter("eliminado", "!=", 1);
     }
 
     static function getUser($campo, $valor)
     {
-        $db = new Database();
-        $sql = "SELECT * FROM usuarios WHERE $campo = :valor";
-        $params = [":valor" => $valor];
-        return $db->fetchOne($sql, $params);
+        $USR = new Usuarios();
+        return $USR->getToAttr($campo, $valor);
     }
 }

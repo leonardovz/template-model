@@ -93,6 +93,7 @@ class Template
         $this->addScript('assets/vendor/js/bootstrap.js');
         $this->addScript('assets/vendor/js/menu.js');
         $this->addScript('assets/js/main.js');
+        $this->addScript('js/sistema/configuracion/CerrarSession.js');
 
         $this->fontAwesome();
         $this->sweetAlert();

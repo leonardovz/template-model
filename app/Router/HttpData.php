@@ -13,6 +13,7 @@ class HttpData
      */
     public static function post($key, $default = null)
     {
+        if (!isset($_POST[$key])) return $default;
         return self::sanitize($_POST[$key] ?? $default);
     }
 
@@ -25,6 +26,7 @@ class HttpData
      */
     public static function get($key, $default = null)
     {
+        if (!isset($_GET[$key])) return $default;
         return self::sanitize($_GET[$key] ?? $default);
     }
 
@@ -36,6 +38,7 @@ class HttpData
      */
     public static function file($key)
     {
+        if (!isset($_FILES[$key])) return null;
         return $_FILES[$key] ?? null;
     }
 
