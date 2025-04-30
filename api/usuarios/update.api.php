@@ -43,11 +43,11 @@ if ($eliminado !== null) {
     $update['eliminado'] = (int)$eliminado;
 }
 
-if ($update = $USR->update($update, ['id' => $id])) {
+if ($USR->update($update, ['id' => $id])) {
     $res = [
         'status' => true,
         'response' => 'success',
-        'text' => 'Se actualizo correctamente el usuario'
+        'text' => 'Se actualizo correctamente el usuario',
     ];
 } else {
     $res = [

@@ -13,13 +13,14 @@ class NavBarLeft
         $menu = self::build_menu($active, $sub_active);
         $ruta = Config::RUTA();
         $T = new Template();
+        $imagen = $T->LOGO;
 
 
         return '<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                     <div class="app-brand main-menu">
                         <a href="' . $ruta . 'sistema" class="app-brand-link">
                             <span class="app-brand-logo main-menu">
-                                <img src="' . $ruta . 'images/icons/icon.png" width="38px">
+                                <img src="' . $ruta . $imagen . '" width="38px">
                             </span>
                             <span class="app-brand-text main-menu menu-text fw-bolder ms-2">' . $T->SISTEMNAME . '</span>
                         </a>

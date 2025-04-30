@@ -5,26 +5,23 @@ namespace App\Models\Google;
 
 class GoogleApi
 {
-    private $recaptcha_secret = '';
-    private $recaptcha_public = '';
+    static private $recaptcha_secret = '6Lfe_SgrAAAAAFkq-HgU4KrGruuKUDyN5XfSRvfa';
+    private $recaptcha_public = '6Lfe_SgrAAAAAGt4CcL7J9jZvGKJeYoPDxQb_KIE';
 
-    public function __construct()
-    {
-        echo "GoogleApi";
-    }
+    // public function __construct() {}
     public function useRecaptcha()
     {
         $librerias  = '<script>const recaptchaKey = "' . $this->recaptcha_public . '";</script>';
         $librerias .= '<script src="https://www.google.com/recaptcha/enterprise.js?render=' . $this->recaptcha_public . '"></script>';
         return $librerias;
     }
-    public function verifyRecaptcha($captcha, $opcion)
+    static public function verifyRecaptcha($captcha, $opcion)
     {
         try {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => $this->recaptcha_secret, 'response' => $captcha)));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => self::$recaptcha_secret, 'response' => $captcha)));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
             curl_close($ch);

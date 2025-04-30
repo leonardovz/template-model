@@ -1,38 +1,53 @@
 <?php
 
+use App\Config\Encriptar;
+use App\Models\Google\GoogleApi;
 use App\Models\Usuarios;
 use App\Router\HttpData;
+use App\Session\SessionManager; // <-- Añadir esta línea
 
-$correo = HttpData::post("correo");
+$correo   = HttpData::post("username");
 $password = HttpData::post("password");
 
 
 
-$user = Usuarios::getUser("correo", $correo);
+$user    = Usuarios::getUser("username", $correo);
 $captcha = HttpData::post("captcha");
 
-// if(GoogleApi)
+$captcha_valid = GoogleApi::verifyRecaptcha($captcha, 'login');
+if (!$captcha_valid['status']) die(json_encode($captcha_valid, JSON_UNESCAPED_UNICODE));
 
 if (!$user) {
     die(json_encode([
         "status" => false,
         "response" => "warning",
-        "message" => "Usuario no encontrado"
+        "text" => "Usuario o contraseña incorrectos",
     ]));
 }
 
-if (!password_verify($password, $user["password"])) {
+if (!Encriptar::verificar($password, $user["password"])) {
     die(json_encode([
         "status" => false,
         "response" => "warning",
-        "message" => "Contraseña incorrecta"
+        "text" => "Usuario o contraseña incorrectos",
     ]));
 }
 
 $session_user = [
-    "id"        => $user["id_usuario"],
+    "id"        => $user["id"],
     "nombre"    => $user["nombre"],
-    "apellidos" => $user["apellidos"],
+    "apellidos" => $user["apellido"],
     "username"  => $user["username"],
-    "tipo_user" => $user["tipo_user"]
+    "rol"       => $user["rol"],
 ];
+
+// Iniciar y configurar la sesión
+$sessionManager = new SessionManager(); // <-- Crear instancia
+$sessionManager->setUserSession($session_user); // <-- Establecer datos de sesión
+$sessionManager->regenerateSessionId(); // <-- Regenerar ID de sesión
+
+die(json_encode([
+    "status" => true,
+    "response" => "success",
+    "text" => "Inicio de sesión exitoso. Sesión iniciada.", // <-- Mensaje actualizado
+]));

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Session;
+
 class SessionManager
 {
     // Iniciar la sesión si no está iniciada
@@ -17,7 +19,7 @@ class SessionManager
             $_SESSION['user'] = $userData;
             $_SESSION['logged_in'] = true;
         } else {
-            throw new Exception("Los datos del usuario deben ser un array.");
+            throw new \Exception("Los datos del usuario deben ser un array.");
         }
     }
 

@@ -25,3 +25,5 @@ $CLoader->cargar('Models/Funciones');
 $CLoader->cargar('Models/Encriptar');
 
 $CLoader->cargar('Models/Usuarios');
+
+$CLoader->cargar('Models/Google/GoogleApi');

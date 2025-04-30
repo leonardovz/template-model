@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Google\GoogleApi;
 use App\Template\Template;
 
 $h = new Template();
@@ -8,6 +9,8 @@ $h->TITULO   = "LOGIN";
 $h->KEYWORDS = "Home";
 
 $h->adminKit();
+$GAPI = new GoogleApi();
+
 $h->addStyle("assets/css/main-login.css");
 $h->header();
 ?>
@@ -66,4 +69,11 @@ $h->header();
             </div>
         </div>
     </div>
+    <?php
+    echo $GAPI->useRecaptcha();
+    $h->addScript("js/login/login.js");
+    echo $h->scripts();
+    ?>
 </body>
+
+</html>

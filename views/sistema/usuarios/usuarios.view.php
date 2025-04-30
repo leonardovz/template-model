@@ -2,8 +2,6 @@
 
 use App\Template\Template;
 
-new SessionManager();
-
 $h = new Template();
 
 $h->TITULO   = "Panel de Control de Usuarios";

@@ -3,6 +3,9 @@
 // Uso del Router
 
 use App\Router\Router;
+use App\Session\SessionManager;
+
+new SessionManager();
 
 $router = new Router();
 
@@ -15,9 +18,11 @@ $router->get('/api/{any}',  fn($any) => '../router/api/api.router.php', 'view');
 $router->post('/api/{any}', fn($any) => '../router/api/api.router.php', 'view');
 
 
-$router->get('/vista/{id}', fn($id) => '../views/home.php', 'view');
-$router->get('/vista/{id}/{nombre}', fn($id, $nombre) => '../views/home.php', 'view');
-$router->get('/redirigir', fn() => 'https://www.google.com', 'redirect');
+
+// $router->get('/vista/{id}', fn($id) => '../views/home.php', 'view');
+// $router->get('/vista/{id}/{nombre}', fn($id, $nombre) => '../views/home.php', 'view');
+// $router->get('/redirigir', fn() => 'https://www.google.com', 'redirect');
+$router->get('/auth/{any}', fn($any = null) => '../router/sistema/auth.router.php', 'view');
 $router->get('/sistema/{any}', fn($any = null) => '../router/sistema/sistema.router.php', 'view');
 
 $router->dispatch();

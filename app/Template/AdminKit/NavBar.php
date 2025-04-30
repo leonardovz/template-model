@@ -3,7 +3,8 @@
 namespace App\Templates\AdminKit;
 
 use App\Config\Config;
-use SessionManager;
+use App\Session\SessionManager;
+use App\Template\Template;
 
 class NavBar
 {
@@ -19,11 +20,8 @@ class NavBar
         $ssmg = new SessionManager();
         $user = $ssmg->getUserData();
 
-        $user = [
-            'nombre'     => 'TEST',
-            'apellidos'  => 'USER',
-            'imagen'     => 'images/icons/icon.png',
-        ];
+        $T = new Template();
+        $imagen = $T->LOGO;
 
 
         return '<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -42,7 +40,7 @@ class NavBar
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="' . $this->ruta . $user['imagen'] . '" alt class="w-px-40 h-auto rounded-circle usuario-imagen-perfil" />
+                                        <img src="' . $this->ruta . $imagen . '" alt class="w-px-40 h-auto rounded-circle usuario-imagen-perfil" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -51,7 +49,7 @@ class NavBar
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="' . $this->ruta . $user['imagen'] . '" alt class="w-px-40 h-auto rounded-circle usuario-imagen-perfil" />
+                                                        <img src="' . $this->ruta . $imagen . '" alt class="w-px-40 h-auto rounded-circle usuario-imagen-perfil" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">

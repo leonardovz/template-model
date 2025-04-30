@@ -1,5 +1,6 @@
 <?php
 
+use App\Session\SessionManager;
 
 $session = new SessionManager();
 $session->logout();
