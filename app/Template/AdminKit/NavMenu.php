@@ -42,6 +42,11 @@ class NavMenu
                         'name' => 'Usuarios',
                         'link' => 'sistema/usuarios'
                     ],
+                    'config' => [
+                        'icon' => 'bx bxs-user-circle me-3',
+                        'name' => 'Sistema',
+                        'link' => 'sistema/config'
+                    ],
                 ]
             ]
         ];
