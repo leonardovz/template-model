@@ -1,9 +1,8 @@
 <?php
 
-use App\Session\SessionManager;
+use App\Models\SessionModel;
 
-$session = new SessionManager();
-$session->logout();
-
+$SSM = new SessionModel();
+$SSM->cerrarSesion();
 
 die(json_encode(['status' => 'ok', 'message' => 'Sesión cerrada correctamente']));

@@ -2,6 +2,7 @@
 
 use App\Config\Encriptar;
 use App\Models\Google\GoogleApi;
+use App\Models\SessionModel;
 use App\Models\Usuarios;
 use App\Router\HttpData;
 use App\Session\SessionManager; // <-- Añadir esta línea
@@ -41,10 +42,17 @@ $session_user = [
     "rol"       => $user["rol"],
 ];
 
+$USR = new Usuarios();
+$USR->update(['ultimo_acceso' => date('Y-m-d H:i:s')], ['id' => $user['id']]);
+
 // Iniciar y configurar la sesión
 $sessionManager = new SessionManager(); // <-- Crear instancia
 $sessionManager->setUserSession($session_user); // <-- Establecer datos de sesión
 $sessionManager->regenerateSessionId(); // <-- Regenerar ID de sesión
+
+$sessionModel = new SessionModel(); // Crear la sesión y obtener el token
+$sessionResult = $sessionModel->crearSesion($session_user);
+
 
 die(json_encode([
     "status" => true,

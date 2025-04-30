@@ -1,3 +1,4 @@
+import Funciones from '../../models/Funciones.js';
 class ModelUsuario {
     constructor() {
         this.usuarios = []
@@ -12,7 +13,7 @@ class ModelUsuario {
             });
     }
     table(data) {
-        return `<div class="table-responsive text-nowrap">
+        return `<div class="table-responsive text-nowrap" style="min-height: 300px;">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -38,7 +39,7 @@ class ModelUsuario {
                     <td>${row.nombre} ${row.apellido}</td>
                     <td>${row.rol.charAt(0).toUpperCase() + row.rol.slice(1)}</td>
                     <td><span class="badge bg-label-${row.estado === 'activo' ? 'success' : 'danger'} me-1">${row.estado.charAt(0).toUpperCase() + row.estado.slice(1)}</span></td>
-                    <td>${row.ultimo_acceso ? new Date(row.ultimo_acceso).toLocaleDateString() : 'Sin accesos'}</td>
+                    <td>${row.ultimo_acceso ? Funciones.tiempo_transcurrido(new Date(row.ultimo_acceso)) : 'Sin accesos'}</td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

@@ -64,7 +64,7 @@ class Funciones {
         if (diff.all_min < 1) {
             diferencia = 'Ahora'; // return (number) minutos
         } else if (diff.all_min < 60) {
-            diferencia = diff.all_min + " minuto" + (diff.all_min == 1 ? "" : "s"); // return (number) minutos
+            diferencia = diff.all_min + " min." + (diff.all_min == 1 ? "" : ""); // return (number) minutos
         } else if (diff.all_hours < 60) {
             diferencia = diff.all_hours + " hora" + (diff.all_hours == 1 ? "" : "s"); // return (number) horas
         } else if (diff.days < 28) {

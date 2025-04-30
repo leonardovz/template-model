@@ -22,4 +22,14 @@ class Functions
     {
         return preg_replace('/[^a-zA-Z0-9.]/', '', $text);
     }
+    public static function obtenerIP()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            return $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        }
+    }
 }

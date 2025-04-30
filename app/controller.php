@@ -27,3 +27,4 @@ $CLoader->cargar('Models/Encriptar');
 $CLoader->cargar('Models/Usuarios');
 
 $CLoader->cargar('Models/Google/GoogleApi');
+$CLoader->cargar('Models/SessionModel');

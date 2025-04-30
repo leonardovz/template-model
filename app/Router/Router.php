@@ -168,4 +168,8 @@ class Router
         $uri = trim($uri, '/');
         return !empty($uri) ? explode('/', $uri) : [];
     }
+    public static function location($uri)
+    {
+        header("Location: " . Config::RUTA() . "$uri");
+    }
 }
